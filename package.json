@@ -5,8 +5,8 @@
   "author": "Gabriel <gabpavao@outlook.com>",
   "license": "MIT",
   "scripts": {
-	"dev": "ts-node-dev --cls --rs --ignore-watch node_modules src/server.ts",
-	"typeorm": "typeorm-ts-node-commonjs"
+    "dev": "ts-node-dev --cls --rs --ignore-watch node_modules src/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
@@ -14,7 +14,7 @@
     "express-async-errors": "^3.1.1",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.12",
+    "typeorm": "0.3.11",
     "zod": "^3.21.4"
   },
   "devDependencies": {
