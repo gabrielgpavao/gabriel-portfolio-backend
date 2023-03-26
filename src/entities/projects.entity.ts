@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Technology } from './technologies.entity';
 
 @Entity('projects')
 export class Project {
@@ -22,4 +23,8 @@ export class Project {
 
 	@Column({ type: 'varchar' })
 	backgroundImg: string;
+
+	@ManyToMany(() => Technology, (technology) => technology.projects)
+	@JoinTable()
+	technologies: Array<Technology>;
 }
