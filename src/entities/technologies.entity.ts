@@ -25,7 +25,7 @@ export class Technology {
 	@PrimaryGeneratedColumn('increment')
 	id: number;
 
-	@Column({ type: 'enum', enum: technologiesList })
+	@Column({ type: 'enum', enum: technologiesList, unique: true })
 	name: string;
 
 	@ManyToMany(() => Project, (project) => project.technologies)
