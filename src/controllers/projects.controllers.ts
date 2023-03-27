@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Project } from '../entities/projects.entity';
 import { tInputProjectData, tOutputProjectData } from '../interfaces/projects.interfaces';
-import { createProjectService } from '../services/createProject.service';
+import { createProjectService } from '../services/projects/createProject.service';
 
 async function createProjectController (request: Request, response: Response): Promise<Response> {
 	const projectData: tInputProjectData = request.body
