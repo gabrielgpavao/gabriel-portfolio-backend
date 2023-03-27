@@ -1,8 +1,7 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { tTechnologies } from '../interfaces/technologies.interfaces';
 import { Project } from './projects.entity';
 
-const technologiesList: Array<tTechnologies> = [
+export const TECHNAME = [
 	'React',
 	'React Native',
 	'TypeScript',
@@ -18,14 +17,14 @@ const technologiesList: Array<tTechnologies> = [
 	'CSS',
 	'Git',
 	'GitHub'
-]
+] as const
 
 @Entity('technologies')
 export class Technology {
 	@PrimaryGeneratedColumn('increment')
 	id: number;
 
-	@Column({ type: 'enum', enum: technologiesList, unique: true })
+	@Column({ type: 'enum', enum: TECHNAME, unique: true })
 	name: string;
 
 	@ManyToMany(() => Project, (project) => project.technologies)
