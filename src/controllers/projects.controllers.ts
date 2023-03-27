@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 import { Project } from '../entities/projects.entity';
+import { tInputProjectData, tOutputProjectData } from '../interfaces/projects.interfaces';
 import { createProjectService } from '../services/createProject.service';
 
 async function createProjectController (request: Request, response: Response): Promise<Response> {
-	const projectData = request.body
+	const projectData: tInputProjectData = request.body
 
-	const newProject: Project = await createProjectService(projectData)
+	const newProject: tOutputProjectData = await createProjectService(projectData)
 	
 	return response.status(201).json(newProject)
 }
