@@ -1,0 +1,52 @@
+{
+	"technologies": [
+		{
+			"name": "React"
+		},
+		{
+			"name": "React Native"
+		},
+		{
+			"name": "TypeScript"
+		},
+		{
+			"name": "JavaScript"
+		},
+		{
+			"name": "Styled-Components"
+		},
+		{
+			"name": "Node"
+		},
+		{
+			"name": "Express"
+		},
+		{
+			"name": "Python"
+		},
+		{
+			"name": "Django"
+		},
+		{
+			"name": "Flask"
+		},
+		{
+			"name": "PostgreSQL"
+		},
+		{
+			"name": "SQLite"
+		},
+		{
+			"name": "HTML"
+		},
+		{
+			"name": "CSS"
+		},
+		{
+			"name": "Git"
+		},
+		{
+			"name": "GitHub"
+		}
+	]
+}

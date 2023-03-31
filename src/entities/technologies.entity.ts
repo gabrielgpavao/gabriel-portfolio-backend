@@ -13,6 +13,7 @@ export const TECHNAME = [
 	'Django',
 	'Flask',
 	'PostgreSQL',
+	'SQLite',
 	'HTML',
 	'CSS',
 	'Git',
