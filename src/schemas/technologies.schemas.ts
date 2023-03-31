@@ -7,12 +7,7 @@ const inputTechnologyDataSchema = z.array(z.object({
 	name: TechNameEnumSchema
 }))
 
-const outputTechnologyDataSchema = inputTechnologyDataSchema.element.extend({
-	id: z.number().int()
-})
-
 export {
 	TechNameEnumSchema,
-	inputTechnologyDataSchema, 
-	outputTechnologyDataSchema
+	inputTechnologyDataSchema
 }

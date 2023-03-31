@@ -1,19 +1,21 @@
 import { AppDataSource } from '../../data-source';
 import { Technology } from '../../entities/technologies.entity';
-import { tTechNameEnum } from '../../interfaces/projects.interfaces';
-import { tOutputTechnologyData, tTechRepo } from '../../interfaces/technologies.interfaces';
-import { outputTechnologyDataSchema, TechNameEnumSchema } from '../../schemas/technologies.schemas';
+import { tInputTechnologyData } from '../../interfaces/technologies.interfaces';
+import { tTechRepo } from '../../interfaces/technologies.interfaces';
+import { TechNameEnumSchema } from '../../schemas/technologies.schemas';
 
-export async function createTechnologyService (techName: tTechNameEnum): Promise<tOutputTechnologyData> {
-	techName = TechNameEnumSchema.parse(techName)
+export async function createTechnologyService (techList: tInputTechnologyData): Promise<void> {
+	techList.forEach((tech) => {
+		tech.name = TechNameEnumSchema.parse(tech.name)
+	})
 	
 	const technologyRepo: tTechRepo = AppDataSource.getRepository(Technology)
-
-	const newTechnology = technologyRepo.create({
-		name: techName
-	})
-
-	await technologyRepo.save(newTechnology)
-
-	return outputTechnologyDataSchema.parse(newTechnology)
+	
+	await technologyRepo
+    	.createQueryBuilder()
+    	.insert()
+    	.into(Technology)
+    	.values(techList)
+		.orIgnore()
+    	.execute()
 }
