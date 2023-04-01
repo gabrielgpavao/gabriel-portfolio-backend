@@ -1,5 +1,6 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { Technology } from './technologies.entity';
+import { ProjectTechnology } from './projectsTechnolgies.entity';
 
 @Entity('projects')
 export class Project {
@@ -24,7 +25,6 @@ export class Project {
 	@Column({ type: 'varchar' })
 	backgroundImg: string;
 
-	@ManyToMany(() => Technology)
-	@JoinTable()
+	@OneToMany(() => ProjectTechnology, (projectTech) => projectTech.project)
 	technologies: Array<Technology>;
 }

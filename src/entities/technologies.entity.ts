@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { Project } from './projects.entity';
+import { ProjectTechnology } from './projectsTechnolgies.entity';
 
 export const TECHNAME = [
 	'React',
@@ -28,6 +29,6 @@ export class Technology {
 	@Column({ type: 'enum', enum: TECHNAME, unique: true })
 	name: string;
 
-	// @ManyToMany(() => Project, (project) => project.technologies)
-	// projects: Array<Project>;
+	@OneToMany(() => ProjectTechnology, (projectTech) => projectTech.technology)
+	projects: Array<Project>;
 }
