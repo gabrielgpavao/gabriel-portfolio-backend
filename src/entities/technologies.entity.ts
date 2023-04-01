@@ -28,6 +28,6 @@ export class Technology {
 	@Column({ type: 'enum', enum: TECHNAME, unique: true })
 	name: string;
 
-	@ManyToMany(() => Project, (project) => project.technologies)
-	projects: Array<Project>;
+	// @ManyToMany(() => Project, (project) => project.technologies)
+	// projects: Array<Project>;
 }
