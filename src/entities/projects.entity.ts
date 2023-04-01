@@ -24,7 +24,7 @@ export class Project {
 	@Column({ type: 'varchar' })
 	backgroundImg: string;
 
-	@ManyToMany(() => Technology, (technology) => technology.projects)
+	@ManyToMany(() => Technology)
 	@JoinTable()
 	technologies: Array<Technology>;
 }
