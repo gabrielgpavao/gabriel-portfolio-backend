@@ -1,7 +1,7 @@
 import { AppDataSource } from '../../data-source';
 import { Project } from '../../entities/projects.entity';
 import { Technology } from '../../entities/technologies.entity';
-import { tOutputTeste, tProjectRepo, tUpdateProjectData } from '../../interfaces/projects.interfaces';
+import { tOptionalUpdateData, tProjectRepo, tUpdateProjectData } from '../../interfaces/projects.interfaces';
 import { tTechRepo } from '../../interfaces/technologies.interfaces';
 
 export async function updateProjectService (projectData: tUpdateProjectData, projectId: number): Promise<Project> {
@@ -10,24 +10,24 @@ export async function updateProjectService (projectData: tUpdateProjectData, pro
 
 	const oldProject: Project | null = await projectRepo.findOneBy({ id: projectId })
 	
-	let handleProject: tOutputTeste | Omit<tOutputTeste, 'technologies'>;
+	let handleNewProject: tOptionalUpdateData | Omit<tOptionalUpdateData, 'technologies'>;
 
-	if (Object.keys(projectData).includes('technologies')) {
+	if (projectData.technologies) {
 		const getAllTechs: Technology[] = await technologyRepo.find()
 		const usedTechs: Technology[] = getAllTechs.filter((tech: Technology) => projectData.technologies!.includes(tech.name))
 
-		handleProject = {
+		handleNewProject = {
 			...projectData,
 			technologies: usedTechs
 		}
 
 	} else {
-		handleProject = projectData
+		handleNewProject = projectData
 	}
 	
 	const updatedProject: Project = projectRepo.create({
 		...oldProject,
-		...handleProject
+		...handleNewProject
 	})
 
 	await projectRepo.save(updatedProject)
