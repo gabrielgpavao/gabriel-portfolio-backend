@@ -2,7 +2,6 @@ import { Repository } from 'typeorm'
 import { z } from 'zod'
 import { Technology } from '../entities/technologies.entity'
 import { inputTechnologyDataSchema, outputTechnologyDataSchema } from '../schemas/technologies.schemas'
-import { tTechNameEnum } from './projects.interfaces'
 
 type tTechRepo = Repository<Technology>
 
