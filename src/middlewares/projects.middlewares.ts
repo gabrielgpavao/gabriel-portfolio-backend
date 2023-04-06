@@ -28,6 +28,18 @@ async function verifyUrlDuplicityMiddleware (request: Request, response: Respons
 	next()
 }
 
+export async function ensureIdExistsMiddleware (request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+	const projectRepo: tProjectRepo = AppDataSource.getRepository(Project)
+
+	try {
+		await projectRepo.findOneByOrFail({ id: Number(request.params.id) })
+		next()
+		
+	} catch (error) {
+		return response.status(404).json({ message: 'Project not found' })
+	}
+}
+
 export {
 	validateInputDataMiddleware,
 	verifyUrlDuplicityMiddleware
