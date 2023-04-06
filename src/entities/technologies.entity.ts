@@ -1,6 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { Project } from './projects.entity';
-import { ProjectTechnology } from './projectsTechnolgies.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { tTechNameEnum } from '../interfaces/projects.interfaces';
 
 export const TECHNAME = [
 	'React',
@@ -27,8 +26,5 @@ export class Technology {
 	id: number;
 
 	@Column({ type: 'enum', enum: TECHNAME, unique: true })
-	name: string;
-
-	@OneToMany(() => ProjectTechnology, (projectTech) => projectTech.technology)
-	projects: Array<Project>;
+	name: tTechNameEnum;
 }

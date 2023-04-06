@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Project } from '../entities/projects.entity';
 import { tInputProjectData, tOutputProjectData } from '../interfaces/projects.interfaces';
 import { createProjectService } from '../services/projects/createProject.service';
 
