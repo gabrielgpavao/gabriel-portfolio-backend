@@ -4,6 +4,7 @@ import { createProjectService } from '../services/projects/createProject.service
 import { getAllProjectsService } from '../services/projects/getAllProjects.service';
 import { updateProjectService } from '../services/projects/updateProject.service';
 import { Project } from '../entities/projects.entity';
+import { deleteProjectService } from '../services/projects/deleteProject.service';
 
 async function createProjectController (request: Request, response: Response): Promise<Response> {
 	const projectData: tInputProjectData = request.body
@@ -29,6 +30,10 @@ async function updateProjectController (request: Request, response: Response): P
 }
 
 async function deleteProjectController (request: Request, response: Response): Promise<Response> {
+	const projectId: number = Number(request.params.id)
+	
+	await deleteProjectService(projectId)
+	
 	return response.status(204).json()
 }
 
