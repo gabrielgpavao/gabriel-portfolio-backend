@@ -16,7 +16,12 @@ const outputProjectDataSchema = inputProjectDataSchema.omit({ technologies: true
 	id: z.number().int()
 })
 
+const projectsListSchema = inputProjectDataSchema.extend({
+	id: z.number().int()
+}).array()
+
 export {
 	inputProjectDataSchema,
-	outputProjectDataSchema
+	outputProjectDataSchema,
+	projectsListSchema
 }
