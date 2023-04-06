@@ -17,7 +17,12 @@ async function getAllProjectsController (request: Request, response: Response): 
 	return response.status(200).json(projectsList)
 }
 
+async function updateProjectsController (request: Request, response: Response): Promise<Response> {
+	return response.status(200).json()
+}
+
 export {
 	createProjectController,
-	getAllProjectsController
+	getAllProjectsController,
+	updateProjectsController
 }
