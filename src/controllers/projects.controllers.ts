@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import { tInputProjectData, tOutputProjectData } from '../interfaces/projects.interfaces';
+import { tInputProjectData, tOutputProjectData, tProjectsList } from '../interfaces/projects.interfaces';
 import { createProjectService } from '../services/projects/createProject.service';
+import { getAllProjectsService } from '../services/projects/getAllProjects.service';
 
 async function createProjectController (request: Request, response: Response): Promise<Response> {
 	const projectData: tInputProjectData = request.body
@@ -10,6 +11,13 @@ async function createProjectController (request: Request, response: Response): P
 	return response.status(201).json(newProject)
 }
 
+async function getAllProjectsController (request: Request, response: Response): Promise<Response> {
+	const projectsList: tProjectsList = await getAllProjectsService()
+	
+	return response.status(200).json(projectsList)
+}
+
 export {
-	createProjectController
+	createProjectController,
+	getAllProjectsController
 }
