@@ -12,17 +12,21 @@ const validateInputDataMiddleware = (schema: ZodTypeAny) => (request: Request, r
 
 async function verifyUrlDuplicityMiddleware (request: Request, response: Response, next: NextFunction): Promise<Response | void> {
 	const projectRepo: tProjectRepo = AppDataSource.getRepository(Project)
-	
-	const findWebsiteUrl = await projectRepo.findOneBy({ websiteUrl: request.body.websiteUrl })
 
-	if (findWebsiteUrl) {
-		return response.status(409).json({ message: 'Website URL already exists'})
+	if (request.body.websiteUrl) {
+		const findWebsiteUrl = await projectRepo.findOneBy({ websiteUrl: request.body.websiteUrl })
+	
+		if (findWebsiteUrl) {
+			return response.status(409).json({ message: 'Website URL already exists'})
+		}
 	}
 	
-	const findRepositoryUrl = await projectRepo.findOneBy({ repositoryUrl: request.body.repositoryUrl })
-	
-	if (findRepositoryUrl) {
-		return response.status(409).json({ message: 'Repository already exists'})
+	if (request.body.repositoryUrl) {
+		const findRepositoryUrl = await projectRepo.findOneBy({ repositoryUrl: request.body.repositoryUrl })
+		
+		if (findRepositoryUrl) {
+			return response.status(409).json({ message: 'Repository already exists'})
+		}
 	}
 
 	next()

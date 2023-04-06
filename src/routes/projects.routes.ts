@@ -7,4 +7,4 @@ export const projectsRoutes: Router = Router()
 
 projectsRoutes.post('', validateInputDataMiddleware(inputProjectDataSchema), verifyUrlDuplicityMiddleware, createProjectController)
 projectsRoutes.get('', getAllProjectsController)
-projectsRoutes.patch('/:id', ensureIdExistsMiddleware, updateProjectsController)
+projectsRoutes.patch('/:id', ensureIdExistsMiddleware, verifyUrlDuplicityMiddleware, updateProjectsController)
