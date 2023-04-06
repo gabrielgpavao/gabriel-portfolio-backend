@@ -19,7 +19,7 @@ async function getAllProjectsController (request: Request, response: Response): 
 	return response.status(200).json(projectsList)
 }
 
-async function updateProjectsController (request: Request, response: Response): Promise<Response> {
+async function updateProjectController (request: Request, response: Response): Promise<Response> {
 	const projectId: number = Number(request.params.id)
 	const projectData = request.body
 
@@ -28,8 +28,13 @@ async function updateProjectsController (request: Request, response: Response): 
 	return response.status(200).json(updatedProject)
 }
 
+async function deleteProjectController (request: Request, response: Response): Promise<Response> {
+	return response.status(204).json()
+}
+
 export {
 	createProjectController,
 	getAllProjectsController,
-	updateProjectsController
+	updateProjectController,
+	deleteProjectController
 }
