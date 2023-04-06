@@ -20,8 +20,11 @@ const projectsListSchema = inputProjectDataSchema.extend({
 	id: z.number().int()
 }).array()
 
+const inputUpdateProjectSchema = inputProjectDataSchema.deepPartial()
+
 export {
 	inputProjectDataSchema,
 	outputProjectDataSchema,
-	projectsListSchema
+	projectsListSchema,
+	inputUpdateProjectSchema
 }

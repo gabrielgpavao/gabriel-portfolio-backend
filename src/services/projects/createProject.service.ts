@@ -10,7 +10,7 @@ export async function createProjectService (projectData: tInputProjectData): Pro
 	const technologyRepo: tTechRepo = AppDataSource.getRepository(Technology)
 
 	const getAllTechs: Technology[] = await technologyRepo.find()
-	const usedTechs: Technology[] = getAllTechs.filter((tech) => projectData.technologies.includes(tech.name))
+	const usedTechs: Technology[] = getAllTechs.filter((tech: Technology) => projectData.technologies.includes(tech.name))
 
 	const newProject: Project = projectRepo.create({
 		...projectData,
