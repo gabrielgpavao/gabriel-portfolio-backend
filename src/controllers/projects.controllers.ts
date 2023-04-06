@@ -10,6 +10,11 @@ async function createProjectController (request: Request, response: Response): P
 	return response.status(201).json(newProject)
 }
 
+async function getAllProjectsController (request: Request, response: Response): Promise<Response> {
+	return response.status(200).json()
+}
+
 export {
-	createProjectController
+	createProjectController,
+	getAllProjectsController
 }
