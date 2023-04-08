@@ -4,4 +4,5 @@ import cors from 'cors'
 
 export const emailRoutes: Router = Router()
 
+emailRoutes.options('', cors())
 emailRoutes.post('', cors(), sendEmailController)
