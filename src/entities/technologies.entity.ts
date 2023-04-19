@@ -4,6 +4,9 @@ import { tTechNameEnum } from '../interfaces/projects.interfaces';
 export const TECHNAME = [
 	'React',
 	'React Native',
+	'React-Router',
+	'React-Hook-Form',
+	'ContextAPI',
 	'Next',
 	'Redux',
 	'TypeScript',
