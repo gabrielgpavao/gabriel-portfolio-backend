@@ -7,6 +7,12 @@
 			"name": "React Native"
 		},
 		{
+			"name": "Redux"
+		},
+		{
+			"name": "Next"
+		},
+		{
 			"name": "TypeScript"
 		},
 		{
@@ -14,6 +20,9 @@
 		},
 		{
 			"name": "Styled-Components"
+		},
+		{
+			"name": "SASS"
 		},
 		{
 			"name": "Node"
