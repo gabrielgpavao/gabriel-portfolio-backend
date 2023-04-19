@@ -7,6 +7,15 @@
 			"name": "React Native"
 		},
 		{
+			"name": "React-Router"
+		},
+		{
+			"name": "React-Hook-Form"
+		},
+		{
+			"name": "ContextAPI"
+		},
+		{
 			"name": "Redux"
 		},
 		{
